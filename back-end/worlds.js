@@ -2,17 +2,11 @@ const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 
-// const multer = require("multer");
-// const upload = multer({
-//   dest: "../front-end/public/images/",
-//   limits: {
-//     fileSize: 50000000,
-//   },
-// });
 
 const users = require("./users.js");
 const User = users.model;
 const validUser = users.valid;
+
 
 const worldSchema = new mongoose.Schema({
   user: {
@@ -37,16 +31,21 @@ const worldSchema = new mongoose.Schema({
 
 const World = mongoose.model("World", worldSchema);
 
+
 var fs = require("fs");
-// upload photo
+// upload world
 router.post("/", validUser, async (req, res) => {
   if (req.body.file) {
     try {
-      let image = Buffer.from(req.body.file, "base64");
+
+      const fileName = `image_${req.body.fileId}.png`;
+      let imgData = req.body.file;
+      var base64Data = imgData.replace(/^data:image\/png;base64,/, "");
+      
       fs.writeFile(
-        "../front-end/public/images/" + req.body.fileId,
-        image,
-        "base64",
+        "../front-end/public/images/" + fileName,
+        base64Data,
+        {encoding: 'base64'},
         function (err) {
           if (err) throw err;
           console.log("File saved.");
@@ -55,7 +54,6 @@ router.post("/", validUser, async (req, res) => {
     } catch (err) {
       console.log(err);
       return res.sendStatus(500);
-      // fs.writeFile(image, "../front-end/public/images/" + req.body.fileId);
     }
   } else {
     return res.status(400).send({
@@ -65,7 +63,7 @@ router.post("/", validUser, async (req, res) => {
 
   const world = new World({
     user: req.user,
-    path: "/images/" + req.body.fileId,
+    path: "/images/" + `image_${req.body.fileId}.png`,
     rule: req.body.rule,
     initialType: req.body.initialType,
     numOfStates: req.body.numOfStates,
@@ -81,13 +79,28 @@ router.post("/", validUser, async (req, res) => {
   }
 });
 
-// get my photos
+// get my worlds
 router.get("/", validUser, async (req, res) => {
-  // return photos
+  // return worlds
   try {
     let worlds = await World.find({
       user: req.user,
     })
+      .sort({
+        created: -1,
+      })
+      .populate("user");
+    return res.send(worlds);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+});
+
+// get all worlds
+router.get("/all", async (req, res) => {
+  try {
+    let worlds = await World.find()
       .sort({
         created: -1,
       })

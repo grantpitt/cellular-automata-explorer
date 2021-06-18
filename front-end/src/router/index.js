@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Dash from "../views/Dash.vue";
+import Gallery from "../views/Gallery.vue";
 
 Vue.use(VueRouter);
 
@@ -26,8 +27,13 @@ const routes = [
   {
     path: "/dash",
     name: "Dash",
-    component: Dash, 
-  }
+    component: Dash,
+  },
+  {
+    path: "/gallery",
+    name: "Gallery",
+    component: Gallery,
+  },
 ];
 
 const router = new VueRouter({

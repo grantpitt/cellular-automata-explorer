@@ -496,7 +496,7 @@ export default {
 				.addEventListener("change", statesChange);
 
 			document.getElementById("add").addEventListener("click", () => {
-				let image = cnv.canvas.toDataURL("image/png");
+				let image = cnv.canvas.toDataURL();
 				this.file = image;
 				this.rule = graph.ruleNum.toString();
 				this.initialType = graph.initialType;
@@ -535,7 +535,6 @@ export default {
 			try {
 				let response = await axios.get("/api/worlds");
         		this.worlds = response.data;
-        		console.log(this.worlds);
 			} catch (error) {
 				this.error = "Error: " + error.response.data.message;
 			}
@@ -566,6 +565,7 @@ export default {
 }
 
 .my-collection {
+	color: #000;
 	margin-top: 0px;
 	font-size: 30px;
 }

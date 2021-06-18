@@ -19,7 +19,7 @@
 
         </div>
         <div class="btn-row">
-          <a class="btn" href="#">View Examples</a>
+          <router-link class="btn" to="/gallery">View Examples</router-link>
           <router-link class="btn" to="/login">Sign In</router-link>
           <router-link class="btn" to="/register">Register</router-link>
         </div>

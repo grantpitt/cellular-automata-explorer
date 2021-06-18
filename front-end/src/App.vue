@@ -112,8 +112,8 @@ header {
 }
 */
 footer p {
-  font-size: 16px;
-  margin: 30px;
+  font-size: 18px;
+  margin: 0;
 }
 footer a {
   color: dodgerblue;
@@ -130,7 +130,7 @@ footer {
   left: 0;
   width: 100%;
   background-color: var(--darkest);
-  padding: 2em;
+  padding: 2.5em;
   color: #e0e0e0;
   text-align: left;
 }
