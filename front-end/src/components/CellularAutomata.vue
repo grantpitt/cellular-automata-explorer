@@ -159,7 +159,13 @@ export default {
 	mounted() {
 		this.initializeCanvas();
 	},
-	created() {
+	async created() {
+		try {
+			let response = await axios.get("/api/users");
+			this.$root.$data.user = response.data.user;
+		} catch (error) {
+			this.$root.$data.user = null;
+		}
 		if (this.user) {
 			this.getWorlds();
 		}
