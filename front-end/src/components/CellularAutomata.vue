@@ -10,7 +10,7 @@
 						<button id="new" type="button" class="my-btn">
 							New
 						</button>
-						<button id="add" class="my-btn">
+						<button v-if="user" id="add" class="my-btn">
 							Add to collection
 						</button>
 					</div>
@@ -113,8 +113,7 @@
 				</fieldset>
 			</div>
 		</div>
-		<hr />
-		<div class="collection">
+		<div v-if="user" class="collection">
 			<h2 class="my-collection">My Collection</h2>
 			<WorldCollection :worlds="worlds" />
 		</div>
@@ -161,7 +160,14 @@ export default {
 		this.initializeCanvas();
 	},
 	created() {
-		this.getWorlds();
+		if (this.user) {
+			this.getWorlds();
+		}
+	},
+	computed: {
+		user() {
+			return this.$root.$data.user;
+		},
 	},
 	watch: {
 		"$root.$data.world": function () {
@@ -557,16 +563,20 @@ export default {
 					.getElementById("states")
 					.addEventListener("change", statesChange);
 
-				document.getElementById("add").addEventListener("click", () => {
-					let image = cnv.canvas.toDataURL();
-					this.file = image;
-					this.rule = graph.ruleNum.toString();
-					this.initialType = graph.initialType;
-					this.numOfStates = graph.states;
-					this.size = graph.size;
-					this.colors = graph.colors;
-					this.upload();
-				});
+				if (this.user) {
+					document
+						.getElementById("add")
+						.addEventListener("click", () => {
+							let image = cnv.canvas.toDataURL();
+							this.file = image;
+							this.rule = graph.ruleNum.toString();
+							this.initialType = graph.initialType;
+							this.numOfStates = graph.states;
+							this.size = graph.size;
+							this.colors = graph.colors;
+							this.upload();
+						});
+				}
 			};
 
 			this.sketchInstance = new p5(sketch);
@@ -632,7 +642,7 @@ button {
 	border: 2px solid #555;
 	padding: 0 10px 0 1 10px;
 	margin: 6px;
-	font-size: 20px;
+	font-size: 24px;
 	border-radius: 6px;
 	font-family: inherit;
 	font-weight: 500;

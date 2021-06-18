@@ -11,7 +11,16 @@
         <img class="world-img" :src="world.path" />
         <div class="details-box">
           <p class="worldRule">Rule: {{ world.rule }}</p>
-          <p class="worldDate">Discovered by {{ world.user.firstName + " " + world.user.lastName + " " + formatDate(world.created) }}</p>
+          <p class="worldDate">
+            Discovered by
+            {{
+              world.user.firstName +
+              " " +
+              world.user.lastName +
+              " " +
+              formatDate(world.created)
+            }}
+          </p>
         </div>
         <!--         </router-link> -->
       </div>
@@ -39,13 +48,12 @@ export default {
         initialType: world.initialType,
         numOfStates: world.numOfStates,
         size: world.size,
-        colors: world.colors
-      }
+        colors: world.colors,
+      };
       this.$root.$data.world = worldSetup;
       if (this.$route.name != "Dash") {
         this.$router.push({ name: "Dash" });
       }
-
     },
   },
 };
@@ -61,7 +69,7 @@ export default {
   cursor: pointer;
 }
 .world-img {
-  max-width: 100%;
+  width: 100%;
   margin-bottom: 0px;
   display: block;
 }
@@ -69,7 +77,7 @@ export default {
   background-color: #000;
   color: #fff;
   padding: 2em;
-/*  margin-top: -3px;*/
+  /*  margin-top: -3px;*/
 }
 .details-box * {
   margin: 0;
