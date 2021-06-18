@@ -7,7 +7,14 @@
     <router-view />
 
     <footer>
-      Check out this project on github.
+      <p>
+        See the GitHub repositiory for this project
+        <a
+          target="_blank"
+          href="https://github.com/grantpitt/real-final"
+          >here</a
+        >
+      </p>
     </footer>
   </div>
 </template>
@@ -91,7 +98,7 @@ header {
   font-weight: 600;
 }
 
-#nav {
+/*#nav {
   padding: 30px;
 }
 
@@ -102,6 +109,17 @@ header {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+*/
+footer p {
+  font-size: 16px;
+  margin: 30px;
+}
+footer a {
+  color: dodgerblue;
+}
+footer a:visited {
+  color: plum;
 }
 
 footer {
