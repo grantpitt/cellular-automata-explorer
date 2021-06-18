@@ -16,7 +16,7 @@ app.use(
 );
 
 // connect to the mongodb database
-mongoose.connect("mongodb://localhost:27017/cellular-automata", {
+mongoose.connect("mongodb://localhost:27017/cellular-automata-1", {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });

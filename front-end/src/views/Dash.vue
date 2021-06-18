@@ -11,10 +11,13 @@ export default {
 	name: "dash",
 	components: {
 		CellularAutomata,
-	}
+	},
+	created() {
+		window.scrollTo({
+			top: 0,
+		});
+	},
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

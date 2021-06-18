@@ -4,7 +4,13 @@ import router from "./router";
 
 Vue.config.productionTip = false;
 
+let data = {
+  user: null,
+  world: null,
+}
+
 new Vue({
   router,
+  data,
   render: (h) => h(App),
 }).$mount("#app");

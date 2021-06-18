@@ -38,7 +38,7 @@ export default {
 <style scoped="">
 .gallery-conatiner {
 	box-sizing: border-box;
-	max-width: 1500px;
+	max-width: 1350px;
 	margin: auto;
 	padding: 30px 40px;
 }

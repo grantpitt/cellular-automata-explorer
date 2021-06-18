@@ -15,6 +15,7 @@
           >here</a
         >
       </p>
+      <p>Time spent: ~ 34 hrs</p>
     </footer>
   </div>
 </template>
@@ -113,7 +114,7 @@ header {
 */
 footer p {
   font-size: 18px;
-  margin: 0;
+  margin: 6px;
 }
 footer a {
   color: dodgerblue;

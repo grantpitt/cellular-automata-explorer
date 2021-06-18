@@ -74,7 +74,7 @@ const validUser = async (req, res, next) => {
 
 
 router.post("/", async (req, res) => {
-  console.log(req.body.firstName);
+  // console.log(req.body.firstName);
   if (
     !req.body.firstName ||
     !req.body.lastName ||

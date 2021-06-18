@@ -48,7 +48,7 @@ router.post("/", validUser, async (req, res) => {
         {encoding: 'base64'},
         function (err) {
           if (err) throw err;
-          console.log("File saved.");
+          // console.log("File saved.");
         }
       );
     } catch (err) {
