@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <header>
-      <router-link id="title" to="/">The Cellular Automata Explorer</router-link>
+      <router-link id="title" to="/"
+        >The Cellular Automata Explorer</router-link
+      >
+      <!-- <p class="logout" v-if="this.$root.$data.user">Logout</p> -->
     </header>
 
     <router-view />
@@ -9,16 +12,14 @@
     <footer>
       <p>
         See the GitHub repositiory for this project
-        <a
-          target="_blank"
-          href="https://github.com/grantpitt/real-final"
+        <a target="_blank" href="https://github.com/grantpitt/cellular-automata-explorer"
           >here</a
         >
       </p>
-      <p>Time spent: ~ 34 hrs</p>
     </footer>
   </div>
 </template>
+
 
 <style>
 @import "./assets/plus-jakarta-sans.css";
@@ -48,7 +49,7 @@
   --nice-blue: #17283a;
   --c9-terminal: #f0f7ff;
 
-    --gradient-1: #0072ff;
+  --gradient-1: #0072ff;
   /*#4ca9df;*/
 
   --gradient-2: #00c6ff;
@@ -97,6 +98,19 @@ header {
   text-decoration: none;
   color: #fff;
   font-weight: 600;
+}
+
+.logout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 30px;
+  box-sizing: border-box;
+  margin: 0;
+  color: #fff;
+}
+.logout:hover {
+  cursor: pointer;
 }
 
 /*#nav {
