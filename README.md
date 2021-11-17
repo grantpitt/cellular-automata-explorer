@@ -1,3 +1,3 @@
 # cellular-automata-explorer
 
-Check it out @ cellularautomata.cantormotors.com
+Check it out @ https://cellularautomata.cantormotors.com
